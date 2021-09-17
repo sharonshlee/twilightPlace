@@ -19,7 +19,7 @@ CREATE TABLE dishes (
   name VARCHAR(255) NOT NULL,
   description TEXT,
   price INTEGER,
-  img_url VARCHAR(255)
+  img_url VARCHAR
 );
 
 CREATE TABLE orders (
