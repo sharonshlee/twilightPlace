@@ -12,7 +12,7 @@ CREATE TABLE clients (
   province VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL
-)
+);
 
 CREATE TABLE dishes (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE dishes (
   description TEXT,
   price INTEGER,
   img_url VARCHAR(255)
-)
+);
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -28,4 +28,4 @@ CREATE TABLE orders (
   dish_id INTEGER REFERENCES dishes(id) ON DELETE CASCADE,
   clients_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
   order_type VARCHAR(255)
-)
+);
