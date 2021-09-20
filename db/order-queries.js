@@ -1,20 +1,14 @@
-const db = require("./db");
+const pool = require("./db");
 
-const addOrder = (
-  quantity,
-  dishId,
-  orderType,
-  placedAt,
-  customerName,
-  phoneNumber
-) =>
-  db
+const addOrder = (placedAt, customerName, phoneNumber, email) => {
+  return pool
     .query(
-      `INSERT INTO orders (quantity, dish_id, order_type, placed_at, customer_name, phone_number) 
-VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`,
-      [quantity, dishId, orderType, placedAt, customerName, phoneNumber]
+      `INSERT INTO orders (placed_at, customer_name, phone_number, email) 
+       VALUES ($1, $2, $3, $4) RETURNING id;`,
+      [placedAt, customerName, phoneNumber, email]
     )
-    .then((result) => result.rows)
+    .then((result) => result.rows[0])
     .catch((err) => console.log("addOrder Error =>", err));
+};
 
 module.exports = { addOrder };

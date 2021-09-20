@@ -6,6 +6,7 @@ function notify(message, toPhoneNumber) {
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_AUTH_TOKEN
   );
+
   return client.messages
     .create({ body: message, from, to: toPhoneNumber })
     .then((message) => console.log("SMS OK", message.sid))

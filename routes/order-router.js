@@ -1,45 +1,58 @@
 const express = require("express");
-const router = express.Router();
+const bodyParser = require("body-parser");
 const { notify } = require("../notification");
 const { addOrder } = require("../db/order-queries");
+const { addOrderDetails } = require("../db/order_details-queries");
 const { getTotalWaitTime } = require("../db/dish-queries");
-const bodyParser = require("body-parser");
+
+const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
+
 router.post("/confirm", async (req, res) => {
-  const { orders, phoneNumber, customerName } = req.body;
-  const orderIds = [];
+  const { dishes, phoneNumber, customerName, email } = req.body;
   const placedAt = new Date();
-  for (const order of orders) {
-    const { quantity, dishId, orderType } = order;
-    const result = await addOrder(
-      quantity,
-      dishId,
-      orderType,
-      placedAt,
-      customerName,
-      phoneNumber
-    );
-    orderIds.push(result[0].id);
+
+  const orderResult = await addOrder(
+    placedAt,
+    customerName,
+    phoneNumber,
+    email
+  );
+  const orderId = orderResult.id;
+
+  for (const dish of dishes) {
+    const { dishId, quantity } = dish;
+    await addOrderDetails(orderId, dishId, quantity); // only insert into DB
   }
+
   const ownerPhoneNumber = process.env.OWNER_PHONE;
-  // Notify owner
+  // Notify owner an order(s) has been placed from the same customer.
   await notify(
-    `New order(s) ${orderIds.join(",")} had been placed.`,
+    `Order ID - ${orderId} has been placed.`,
     ownerPhoneNumber
   ).catch((err) => console.log(err));
 
-  const totalWaitTime = (await getTotalWaitTime(orderIds)) * 1.2;
+  const totalWaitTime = (await getTotalWaitTime(orderId)) * 1.2; //+20% cooking time
 
+  // Notify customer the wait time for pick up.
   await notify(
-    `Your order will be ready in ${totalWaitTime} minute(s)`,
+    `Your food will be ready in ${totalWaitTime} minute(s)`,
     phoneNumber
   ).catch((err) => console.log(err));
+
+  // Notify customer automatically after wait time + 20% buffer time when the food is ready.
   setTimeout(async () => {
-    await notify(`Your order is ready for pick up!`, phoneNumber).catch((err) =>
+    await notify(`Your food is ready for pick up!`, phoneNumber).catch((err) =>
       console.log(err)
     );
     res.end();
-  }, (totalWaitTime * 60 * 1000) / 1000); // Minutes * 60s * 1000ms / 1000 for testing only
+  }, (totalWaitTime * 60 * 1000) / 1000); // Minutes * 60s * 1000ms(/ 1000 for testing only)
+
+  // send email to customer for receipt and future food recommendations if they opt for it
+  // await notify_email('Customer Name, thank you for your order with Twilight and we hope to you again!' +
+  //                     'Please check out our recommendations for your future visit.' +
+  //                     'Included here is your receipt for today''s order.')
+  //       .catch((err) => console.log(err));
 });
 
 module.exports = router;
