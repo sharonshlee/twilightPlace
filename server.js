@@ -63,7 +63,7 @@ const checkout = require("./routes/checkout");
 const restaurant = require("./routes/restaurant");
 const order = require("./routes/order");
 const popular = require("./routes/popular");
-
+const confirmationRoutes = require("./routes/confirmation");
 
 
 // Mount all resource routes
@@ -76,6 +76,7 @@ app.use("/api/orders", ordersRoutes(db));
 app.use("/api/foods_orders", foods_ordersRoutes(db));
 app.use("/api/delete", delete_foods(db));
 app.use("/checkout", checkout(db));
+app.use("/confirmation", confirmationRoutes(db));
 
 app.use("/order", order(db));
 
