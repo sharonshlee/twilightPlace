@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS orders_details CASCADE;
+
+CREATE TABLE orders_details (
+  id SERIAL PRIMARY KEY NOT NULL,
+  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+  dish_id INTEGER REFERENCES dishes(id) ON DELETE CASCADE,
+  quantity INTEGER
+);

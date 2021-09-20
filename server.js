@@ -64,6 +64,8 @@ const restaurant = require("./routes/restaurant");
 const order = require("./routes/order");
 const popular = require("./routes/popular");
 const confirmationRoutes = require("./routes/confirmation");
+const thankyouRoutes = require("./routes/thankyou");
+
 
 
 // Mount all resource routes
@@ -77,7 +79,7 @@ app.use("/api/foods_orders", foods_ordersRoutes(db));
 app.use("/api/delete", delete_foods(db));
 app.use("/checkout", checkout(db));
 app.use("/confirmation", confirmationRoutes(db));
-
+app.use("/thankyou", thankyouRoutes(db));
 app.use("/order", order(db));
 
 
@@ -129,14 +131,6 @@ app.get("/order", (req, res) => {
   const user = req.session.user;
   const templateVars = { user };
   res.render("index", templateVars);
-})
-
-app.get("/thankyou", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  console.log('tmeplate vars hsere ;', templateVars)
-  res.render("thankyou", templateVars);
-
 })
 
 app.get("/popular", (req, res) => {

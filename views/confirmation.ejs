@@ -25,7 +25,13 @@
     <h3><strong>ORDER TOTAL :</strong>
       <%= orderTotal %>
     </h3>
-    <form>
+    <form method="POST" action="/thankyou">
+      <label for="name">Full Name: </label>
+      <input type="text" placeholder="Enter Full Name" name="name">
+      <label for="email">Email: </label>
+      <input type="text" placeholder="Enter Email" name="email">
+      <label for="phone_number">Phone Number: </label>
+      <input type="text" placeholder="Enter Phone Number" name="phone_number">
       <button type="submit">Confirm and Place Order</button>
     </form>
     <form method="GET" action="/foods">
