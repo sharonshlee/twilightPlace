@@ -80,50 +80,6 @@ app.use("/popular", popular(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  const user = req.session.user;
-
-  console.log('user', user);
-  const templateVars = { user };
-  res.render("index", templateVars);
-});
-
-app.get("/login", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user};
-  res.render("login", templateVars);
-})
-
-app.get("/seafood", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  res.render("seafood", templateVars);
-});
-
-app.get("/checkout", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  res.render("checkout", templateVars);
-})
-
-app.get("/restaurant", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  res.render("restaurant", templateVars);
-})
-
-app.get("/order", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  res.render("index", templateVars);
-})
-
-app.get("/popular", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  res.render("popular", templateVars);
-});
-
-app.get("/", (req, res) => {
   res.render("index");
 });
 
