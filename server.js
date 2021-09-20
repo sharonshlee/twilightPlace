@@ -7,19 +7,9 @@ const ENV = process.env.ENV || "development";
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const morgan = require("morgan");
-<<<<<<< HEAD
 const express = require("express");
+const cookieSession = require("cookie-session");
 const app = express();
-=======
-const cookieSession = require('cookie-session');
-// const userRoutes = require('./userRoutes');
-
-// PG database client/connection setup
-const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
-const db = new Pool(dbParams);
-db.connect();
->>>>>>> menu-and-order-confirmation-page
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
