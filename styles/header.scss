@@ -1,0 +1,56 @@
+header{
+  display: flex;
+    width: 100%;
+    flex-direction: row;
+    background-color:#62cade;
+    align-items: center;
+
+}
+
+.navbars{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  color: white;
+  width:100%;
+  justify-content: space-around;
+}
+
+.navbar-Food,.navbar-Popular,.navbar-Features{
+  margin-left: 70px;
+  font-family: 'Bungee';
+  color:white;
+}
+
+.navbar-navee  {   /*edit the headers login*/
+  display:flex;
+  font-family: 'Bungee';
+  color:black;
+
+}
+
+button{
+  font-size: inherit;
+  font:inherit;
+}
+
+h1{
+  text-decoration: none;
+}
+
+.restaurant-name{
+  font-family: 'Dancing Script', cursive;
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 40px;
+  width:22%;
+}

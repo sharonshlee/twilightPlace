@@ -2,18 +2,34 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 const ENV = process.env.ENV || "development";
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const morgan = require("morgan");
+<<<<<<< HEAD
 const express = require("express");
 const app = express();
+=======
+const cookieSession = require('cookie-session');
+// const userRoutes = require('./userRoutes');
+
+// PG database client/connection setup
+const { Pool } = require('pg');
+const dbParams = require('./lib/db.js');
+const db = new Pool(dbParams);
+db.connect();
+>>>>>>> menu-and-order-confirmation-page
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-app.use(morgan("dev"));
+
+app.use(morgan('dev'));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,25 +42,102 @@ app.use(
     outputStyle: "expanded",
   })
 );
+
+
+// /user/endpoints
+// app.use('/', userRoutes(db));
 app.use(express.static("public"));
+app.use(express.static("public"));
+
+
+
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/user-router");
 const ordersRoutes = require("./routes/order-router");
+const menuRoutes = require("./routes/menu");
+const confirmationRoutes = require("./routes/confirmation");
+const thankyouRoutes = require("./routes/thankyou");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", ordersRoutes);
+
+
+
+// Mount all resource routes
+// Note: Feel free to replace the example routes below with your own
+
+app.use("/foods", menuRoutes(db));
+app.use("/confirmation", confirmationRoutes(db));
+app.use("/thankyou", thankyouRoutes(db));
+
+
+
+app.use("/api/restaurant", restaurant(db));
+
+
+app.use("/popular", popular(db));
+
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
+app.get("/", (req, res) => {
+  const user = req.session.user;
+
+  console.log('user', user);
+  const templateVars = { user };
+  res.render("index", templateVars);
+});
+
+app.get("/login", (req, res) => {
+  const user = req.session.user;
+  const templateVars = { user};
+  res.render("login", templateVars);
+})
+
+app.get("/seafood", (req, res) => {
+  const user = req.session.user;
+  const templateVars = { user };
+  res.render("seafood", templateVars);
+});
+
+app.get("/checkout", (req, res) => {
+  const user = req.session.user;
+  const templateVars = { user };
+  res.render("checkout", templateVars);
+})
+
+app.get("/restaurant", (req, res) => {
+  const user = req.session.user;
+  const templateVars = { user };
+  res.render("restaurant", templateVars);
+})
+
+app.get("/order", (req, res) => {
+  const user = req.session.user;
+  const templateVars = { user };
+  res.render("index", templateVars);
+})
+
+app.get("/popular", (req, res) => {
+  const user = req.session.user;
+  const templateVars = { user };
+  res.render("popular", templateVars);
+});
+
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

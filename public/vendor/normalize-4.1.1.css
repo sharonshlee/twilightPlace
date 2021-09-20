@@ -5,7 +5,7 @@
  * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
-html {
+ html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -159,8 +159,8 @@ h1 {
  */
 
 mark {
-  background-color: #ff0;
-  color: #000;
+  background-color: rgb(192, 119, 16);
+  color: rgb(73, 64, 64);
 }
 
 /**
@@ -168,7 +168,7 @@ mark {
  */
 
 small {
-  font-size: 80%;
+  font-size: 60%;
 }
 
 /**
@@ -178,7 +178,7 @@ small {
 
 sub,
 sup {
-  font-size: 75%;
+  font-size: 85%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
@@ -331,7 +331,7 @@ button:-moz-focusring,
  */
 
 fieldset {
-  border: 1px solid #c0c0c0;
+  border: 1px solid #949292;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
