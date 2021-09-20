@@ -10,7 +10,7 @@ const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
 const cookieSession = require('cookie-session');
-const userRoutes = require('./userRoutes');
+// const userRoutes = require('./userRoutes');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -42,7 +42,7 @@ app.use(
 
 
 // /user/endpoints
-app.use('/', userRoutes(db));
+// app.use('/', userRoutes(db));
 app.use(express.static("public"));
 app.use(express.static("public"));
 
@@ -106,7 +106,7 @@ app.get("/login", (req, res) => {
   res.render("login", templateVars);
 })
 
-pp.get("/seafood", (req, res) => {
+app.get("/seafood", (req, res) => {
   const user = req.session.user;
   const templateVars = { user };
   res.render("seafood", templateVars);

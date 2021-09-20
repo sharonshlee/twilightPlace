@@ -12,6 +12,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
     "cookie-session": "^1.4.0",
@@ -21,7 +22,8 @@
     "morgan": "^1.9.1",
     "node-sass-middleware": "^0.11.0",
     "pg": "^8.5.0",
-    "pg-native": "^3.0.0"
+    "pg-native": "^3.0.0",
+    "twilio": "^3.67.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
@@ -34,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rexiah23/midterm-foodorderapp.git"
+    "url": "git+https://github.com/rexiah23/twilight-.git"
   },
   "bugs": {
-    "url": "https://github.com/rexiah23/midterm-foodorderapp/issues"
+    "url": "https://github.com/rexiah23/twilight-/issues"
   },
-  "homepage": "https://github.com/rexiah23/midterm-foodorderapp#readme"
+  "homepage": "https://github.com/rexiah23/twilight-#readme"
 }
