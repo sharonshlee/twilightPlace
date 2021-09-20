@@ -47,12 +47,6 @@ router.post("/confirm", async (req, res) => {
     );
     res.end();
   }, (totalWaitTime * 60 * 1000) / 1000); // Minutes * 60s * 1000ms(/ 1000 for testing only)
-
-  // send email to customer for receipt and future food recommendations if they opt for it
-  // await notify_email('Customer Name, thank you for your order with Twilight and we hope to you again!' +
-  //                     'Please check out our recommendations for your future visit.' +
-  //                     'Included here is your receipt for today''s order.')
-  //       .catch((err) => console.log(err));
 });
 
 module.exports = router;
