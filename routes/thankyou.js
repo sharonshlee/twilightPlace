@@ -32,7 +32,6 @@ module.exports = (db) => {
           email
         }
         req.session.orderConfirmed.push(orderConfirmation);
-        console.log("orderConfirmed :", req.session.orderConfirmed);
       })
       .catch(err => {
         res
