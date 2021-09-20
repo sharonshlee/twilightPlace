@@ -5,6 +5,6 @@ CREATE TABLE orders (
   placed_at TIMESTAMP,
   finished_at TIMESTAMP,
   customer_name VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(255) NOT NULL
+  phone_number VARCHAR(255) NOT NULL,
   email VARCHAR(255)
 );
