@@ -11,6 +11,7 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/login.js"></script>
+    <script type="text/javascript" src="/scripts/rewards.js"></script>
   </head>
 
   <body>
@@ -25,13 +26,10 @@
     <h3><strong>ORDER TOTAL :</strong>
       <%= orderTotal %>
     </h3>
-    <form method="POST" action="/thankyou">
-      <label for="name">Full Name: </label>
-      <input type="text" placeholder="Enter Full Name" name="name">
-      <label for="email">Email: </label>
-      <input type="text" placeholder="Enter Email" name="email">
-      <label for="phone_number">Phone Number: </label>
-      <input type="text" placeholder="Enter Phone Number" name="phone_number">
+    <form id="rewardsForm">
+      <button type="submit">Check and apply rewards points</button>
+    </form>
+    <form>
       <button type="submit">Confirm and Place Order</button>
     </form>
     <form method="GET" action="/foods">

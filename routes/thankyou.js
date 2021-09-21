@@ -17,7 +17,7 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     const cartItems = req.session.cartItems;
-    const {phone_number, email, name } = req.body;
+    const { phone_number, email, name } = req.session.contactInfo;
     req.session.orderConfirmed = [];
     for (let i = 0; i < cartItems.quantity.length; i++) {
       const quantity = parseInt(cartItems.quantity[i]);

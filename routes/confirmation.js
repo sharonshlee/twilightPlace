@@ -5,11 +5,6 @@ module.exports = (db) => {
 
   router.get("/", (req,res) => {
     const cartItems = req.session.cartItems;
-    //redirect customer to menu page if cartItems cookie does not exist
-    if (!cartItems) {
-      return res.redirect("/");
-    }
-
     const templateVars = {
       dishes: []
     };
@@ -30,7 +25,6 @@ module.exports = (db) => {
       orderTotal += currQuantity * currDishPrice;
     }
     templateVars.orderTotal = orderTotal;
-
     res.render('confirmation', templateVars);
   })
 
@@ -38,14 +32,6 @@ module.exports = (db) => {
     req.session.cartItems = req.body;
     res.redirect("/confirmation");
   });
-
-  router.post("/:food_id", (req, res) => {
-
-    const foods_id = req.params.food_id;
-    req.session.foods_id.push(foods_id);
-    res.redirect('/foods');
-
-  })
 
   return router;
 };

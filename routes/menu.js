@@ -9,6 +9,7 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+
   router.get("/", (req, res) => {
       db.query(`SELECT * FROM dishes;`)
         .then(data => {
@@ -23,6 +24,13 @@ module.exports = (db) => {
             .json({ error: err.message });
         });
     });
+
+  router.post("/", (req, res) => {
+    const {phone_number, email, name } = req.body;
+    req.session.contactInfo = {phone_number, email, name};
+    console.log('THE USER INFO WAS SAVED: ', req.session.contactInfo);
+    res.redirect("/menu");
+  })
 
   return router;
 };
