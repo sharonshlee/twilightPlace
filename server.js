@@ -12,8 +12,8 @@ const cookieSession = require("cookie-session");
 const app = express();
 
 // PG database client/connection setup
-const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
+const { Pool } = require("pg");
+const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 // console.log("SERVER @*#*!*#*!", db);
 db.connect();
@@ -22,11 +22,13 @@ db.connect();
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 
-app.use(morgan('dev'));
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1']
-}));
+app.use(morgan("dev"));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1"],
+  })
+);
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,15 +42,10 @@ app.use(
   })
 );
 
-
 // /user/endpoints
 // app.use('/', userRoutes(db));
 app.use(express.static("public"));
 app.use(express.static("public"));
-
-
-
-
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -64,8 +61,6 @@ const rewardsRoutes = require("./routes/rewards");
 app.use("/api/users", usersRoutes(db));
 // app.use("/api/orders", ordersRoutes(db));
 
-
-
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 
@@ -73,8 +68,6 @@ app.use("/menu", menuRoutes(db));
 app.use("/confirmation", confirmationRoutes(db));
 app.use("/thankyou", thankyouRoutes(db));
 app.use("/api/rewards", rewardsRoutes(db));
-
-
 
 // Note: mount other resources here, using the same pattern above
 
