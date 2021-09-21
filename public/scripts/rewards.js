@@ -1,21 +1,27 @@
-const users = require("../../routes/rewards");
-console.log("ITS HITTING REWARDS.JSSSSS")
 $(() => {
-  console.log("JQUER WORKIN");
-  $('#rewardsForm').on('submit', () => {
-    console.log("IT SUBMITED!");
-    getRewardsCount();
+  $('#rewardsForm').on('submit', (event) => {
+    event.preventDefault();
+    applyRewards();
   })
+});
 
+function applyRewards() {
 
-})
-
-function getRewardsCount() {
-  $.ajax({
+ return $.ajax({
     url: '/api/rewards',
     method: 'GET'
-  }).then((result) => {
-    console.log('THE ROWS RESULT IS:', result.rows);
-  });
+  })
+  .then(rewards => {
+    const $orderTotal = $('#order_total');
+    const $totalBeforeRewards = parseInt($('#order_total').text());
+    if (rewards.count >= 1) {
+      const newTotal = $totalBeforeRewards * 0.8;
+      return $orderTotal.text(`Rewards Successfully Applied! Your New Total is: ${newTotal}`);
+    }
+    $orderTotal.text(`Insufficient Rewards. Total is still: ${$totalBeforeRewards}`);
+  })
 }
+
+
+
 

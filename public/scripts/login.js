@@ -1,5 +1,3 @@
-const users = require("../../routes/users");
-
 $(document).ready(function() {
 
   const user = () => {
