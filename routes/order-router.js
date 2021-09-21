@@ -27,9 +27,11 @@ router.post("/confirm", async (req, res) => {
   }
 
   const ownerPhoneNumber = process.env.OWNER_PHONE;
+
+  //// SMS
   // Notify owner an order(s) has been placed from the same customer.
   await notifyBySMS(
-    `Order ID - ${orderId} has been placed.`,
+    `Order ID: ${orderId} has been placed.`,
     ownerPhoneNumber
   ).catch((err) => console.log(err));
 
@@ -48,24 +50,39 @@ router.post("/confirm", async (req, res) => {
     );
     res.end();
   }, (totalWaitTime * 60 * 1000) / 1000); // Minutes * 60s * 1000ms(/ 1000 for testing only)
+  //// End SMS
 
+  //// EMAIL
+  // Send thank you email to customer and food recommendations if email is not null.
   if (customerEmail) {
     const subject = "Thank you for you order from Twilight Place";
-    let message = `<p>Hello ${customerName},</p><p>Thank you for your order with Twilight Place and we hope to see you again!</p> 
-<p>Please check out our recommendations for your future visit.</p>
-<p>Thanks again and do visit soon!</p>`;
+    let message = `<div style="text-align: center; background-color:powderblue;">
+                  <h1>Hello <b>${customerName}</b>,</h1>
+                  <p>Thank you for ordering with Twilight Place and we hope to see you again!</p> 
+                  <p>Please check out our menu recommendations for your future visit.</p>
+                  <p>Thanks again and do visit soon!</p>
+                  <p>~Twilight Place</p>
+                  <p>For your next order, we recommend :</p>`;
 
     const recommendations = await getRecommendations(dishIds);
     message += "<ul>";
     for (const recommendation of recommendations) {
-      message += `<li style='list-style:none;'><div><b>${recommendation.name}</b></div><img src='${recommendation.img_url}' width='320' /></li>`;
+      message += `<li style='list-style:none;'>
+<h1>${recommendation.name}</h1>
+<div><img src='${recommendation.img_url}' width='500' height='500' />
+<p>${recommendation.description}</p></div></li>
+`;
     }
     message += "</ul>";
-    //send thank you email to customer for future food recommendations if email is not null.
+    message += `<hr style='border-top: 2px solid gray'/>
+                <footer style='font-size: 10px; color: "gray"'>&copy;2021 Twilight Place | website: http://www.twilightPlace.ca | tel: +16395759 | address: Twilight Street, 5C9M4W, Toronto, ON, Canada</footer> 
+                </div>`;
+
     await notifyByEmail(customerEmail, subject, message).catch((err) =>
       console.log(err)
     );
   }
+  // END EMAIL
 });
 
 module.exports = router;
