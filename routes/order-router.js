@@ -55,26 +55,29 @@ router.post("/confirm", async (req, res) => {
   //// EMAIL
   // Send thank you email to customer and food recommendations if email is not null.
   if (customerEmail) {
-    const subject = "Thank you for you order from Twilight Place";
-    let message = `<div style="text-align: center; background-color:powderblue;">
-                  <h1>Hello <b>${customerName}</b>,</h1>
-                  <p>Thank you for ordering with Twilight Place and we hope to see you again!</p> 
-                  <p>Please check out our menu recommendations for your future visit.</p>
-                  <p>Thanks again and do visit soon!</p>
-                  <p>~Twilight Place</p>
-                  <p>For your next order, we recommend :</p>`;
+    const subject = "Thank you for your order from Twilight Place";
+    let message = `<div style="text-align: center; background-color: powderblue">
+                   <h1>Hello <b>${customerName}</b>,</h1>
+                   <div class="d-flex justify-content-center">
+                    Thank you for ordering with Twilight Place and we hope to see you again!
+                    Please check out our menu recommendations for your future visit. Thanks
+                    again and do visit soon! ~Twilight Place 
+                    <br /><br /><br />
+                    For your next order, we recommend :
+                   </div>
+                  `;
 
     const recommendations = await getRecommendations(dishIds);
     message += "<ul>";
     for (const recommendation of recommendations) {
       message += `<li style='list-style:none;'>
-<h1>${recommendation.name}</h1>
-<div><img src='${recommendation.img_url}' width='500' height='500' />
-<p>${recommendation.description}</p></div></li>
-`;
+                  <h1>${recommendation.name}</h1>
+                  <div><img src='${recommendation.img_url}' width='500' height='500' />
+                  <p>${recommendation.description}</p></div></li>
+                  `;
     }
     message += "</ul>";
-    message += `<hr style='border-top: 2px solid gray'/>
+    message += `<hr style='border-top: 1px solid black'/>
                 <footer style='font-size: 10px; color: "gray"'>&copy;2021 Twilight Place | website: http://www.twilightPlace.ca | tel: +16395759 | address: Twilight Street, 5C9M4W, Toronto, ON, Canada</footer> 
                 </div>`;
 
