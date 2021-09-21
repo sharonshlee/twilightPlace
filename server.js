@@ -59,7 +59,7 @@ const rewardsRoutes = require("./routes/rewards");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
-// app.use("/api/orders", ordersRoutes(db));
+app.use("/api/orders", ordersRoutes(db));
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
