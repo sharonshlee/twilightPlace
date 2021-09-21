@@ -12,13 +12,16 @@ function applyRewards() {
     method: 'GET'
   })
   .then(rewards => {
+    const $orderText = $('#order_text');
     const $orderTotal = $('#order_total');
-    const $totalBeforeRewards = parseInt($('#order_total').text());
+    const $totalBeforeRewards = parseInt($orderTotal.text());
     if (rewards.count >= 1) {
       const newTotal = $totalBeforeRewards * 0.8;
-      return $orderTotal.text(`Rewards Successfully Applied! Your New Total is: ${newTotal}`);
+      $orderText.text('Rewards Successfully Applied! Your New Total is: ');
+      return $orderTotal.text(newTotal);
     }
-    $orderTotal.text(`Insufficient Rewards. Total is still: ${$totalBeforeRewards}`);
+    $orderText.text('Insufficient Rewards. Total is still: ');
+    return $orderTotal.text($totalBeforeRewards);
   })
 }
 

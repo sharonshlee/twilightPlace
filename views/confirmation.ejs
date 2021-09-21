@@ -23,9 +23,10 @@
         <p>Price With Quantity: <%= dish.dish_price * dish.quantity %></p>
       </div>
     <% }) %>
-    <h3><strong>ORDER TOTAL :</strong>
+    <div>
+      <h3 id="order_text"><strong>ORDER TOTAL :</strong></h3>
       <p id="order_total"><%= orderTotal %></p>
-    </h3>
+    </div>
     <form id="rewardsForm">
       <button type="submit">Check and apply rewards points</button>
     </form>
