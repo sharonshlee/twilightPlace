@@ -12,8 +12,12 @@ $(() => {
 
     const phoneNumber = $("#txtPhoneNumber").val();
     const customerName = $("#txtName").val();
-    $.post("/api/orders/confirm", { dishes, phoneNumber, customerName }).then(
-      (res) => console.log(">>> Order Placed!", res)
-    );
+    const customerEmail = $("#txtEmail").val();
+    $.post("/api/orders/confirm", {
+      dishes,
+      phoneNumber,
+      customerName,
+      customerEmail,
+    }).then((res) => console.log(">>> Order Placed!", res));
   });
 });
