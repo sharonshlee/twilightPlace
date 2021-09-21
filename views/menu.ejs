@@ -14,7 +14,21 @@
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <%- include('partials/_header') %>
+    <form method="POST" action="/confirmation">
+      <% dishes.forEach(dish => { %>
+        <div>
+          <h1><%= dish.name %></h1>
+          <p><%= dish.description %></p>
+          <p>Price $: <%= dish.price %></p>
+          <label for="quantity">Quantity: </label>
+          <input type="number" name="quantity">
+          <input type="hidden" name="dish_name" value="<%= dish.name %>">
+          <input type="hidden" name="dish_price" value="<%= dish.price %>">
+        </div>
+        <% }) %>
+        <button type="submit">Add to cart and go to confirmation page</button>
+      </form>
   </body>
 
 </html>

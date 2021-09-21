@@ -2,18 +2,31 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 const ENV = process.env.ENV || "development";
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const morgan = require("morgan");
 const express = require("express");
+const cookieSession = require("cookie-session");
 const app = express();
+
+// PG database client/connection setup
+const { Pool } = require('pg');
+const dbParams = require('./lib/db.js');
+const db = new Pool(dbParams);
+// console.log("SERVER @*#*!*#*!", db);
+db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-app.use(morgan("dev"));
+
+app.use(morgan('dev'));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,24 +39,53 @@ app.use(
     outputStyle: "expanded",
   })
 );
+
+
+// /user/endpoints
+// app.use('/', userRoutes(db));
 app.use(express.static("public"));
+app.use(express.static("public"));
+
+
+
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/user-router");
 const ordersRoutes = require("./routes/order-router");
+const menuRoutes = require("./routes/menu");
+const confirmationRoutes = require("./routes/confirmation");
+const thankyouRoutes = require("./routes/thankyou");
+const rewardsRoutes = require("./routes/rewards");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes);
-app.use("/api/orders", ordersRoutes);
+app.use("/api/users", usersRoutes(db));
+// app.use("/api/orders", ordersRoutes(db));
+
+
+
+// Mount all resource routes
+// Note: Feel free to replace the example routes below with your own
+
+app.use("/menu", menuRoutes(db));
+app.use("/confirmation", confirmationRoutes(db));
+app.use("/thankyou", thankyouRoutes(db));
+app.use("/api/rewards", rewardsRoutes(db));
+
+
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
 app.get("/", (req, res) => {
-  res.render("index");
+  const user = req.session.user;
+  const templateVars = { user };
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {

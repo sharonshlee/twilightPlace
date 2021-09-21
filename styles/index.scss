@@ -1,0 +1,64 @@
+.background{
+  width:100%
+}
+
+.banner{
+
+  text-align: center;
+  position: fixed;
+  width:100%;
+}
+
+.welcomesign{
+  background-color: #62cade;
+  position: absolute;
+  top:35%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background-size:100%;
+  justify-content: space-around;
+  width: 30%; opacity: 0.8;
+  border-radius: 5px;
+
+
+  h2{
+    color:white;
+    font-size:34px;
+    // justify-content: center;
+    }
+}
+
+img{
+  margin-top:-16px;
+}
+
+
+.addtocart2 {
+  --c: #027ad6;
+  color: var(--c);
+  font-size: 10px;
+  border: 0.3em solid var(--c);
+  border-radius: 0.5em;
+  width: 13em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  /* letter-spacing: 0.1em; */
+  text-align: center;
+  /* line-height: 3em; */
+  /* position: relative; */
+  /* overflow: hidden; */
+  /* z-index: 1; */
+  transition: 0.5s;
+  /* margin: 1em;*/
+  max-height: 20%;
+  /* margin-top:80px;*/
+}
+
+.addtocart2:hover {
+  color: blue;
+  transform: translateY(0) scale(1.1);
+  background-color: var(--c);
+}
+

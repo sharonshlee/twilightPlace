@@ -1,55 +1,57 @@
-<header>
-  <nav
-    class="navbar navbar-expand-md navbar-dark"
-    style="background-color: #cf6f01; padding: 0.5em"
-  >
-    <a
-      style="
-        font-family: 'Dancing Script', cursive;
-        font-size: 1.5em;
-        padding-left: 0.5em;
-      "
-      class="navbar-brand"
-      href="/urls"
-      >Twilight <span class="fas fa-utensils"></span> Place</a
+<html>
+  <header>
+    <nav
+      class="navbar navbar-expand-md navbar-dark"
+      style="background-color: #cf6f01; padding: 0.5em"
     >
+      <a
+        style="
+          font-family: 'Dancing Script', cursive;
+          font-size: 1.5em;
+          padding-left: 0.5em;
+        "
+        class="navbar-brand"
+        href="/urls"
+        >Twilight <span class="fas fa-utensils"></span> Place</a
+      >
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div
-      class="collapse navbar-collapse"
-      style="padding-left: 1em"
-      id="navbarSupportedContent"
-    >
-      <div class="navbar-nav mr-auto">
-        <a class="nav-item nav-link" href="/urls/new">New Order</a>
+      <div
+        class="collapse navbar-collapse"
+        style="padding-left: 1em"
+        id="navbarSupportedContent"
+      >
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="/urls/new">New Order</a>
+        </div>
+        <% if (!locals.user) { %>
+        <div class="navbar-nav my-2 my-lg-0">
+          <a class="nav-item nav-link mr-sm-2" href="/login">My Rewards</a>
+          <a class="nav-item nav-link mr-sm-2" href="/register">Search Menu</a>
+          <a class="nav-item nav-link mr-sm-2" href="/register"
+            ><i class="fas fa-location-arrow"></i
+          ></a>
+        </div>
+        <% } if(locals.user) { %>
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/logout">
+          <label class="mr-sm-2">Logged In As: <%= user.email %></label>
+          <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">
+            Logout
+          </button>
+        </form>
+        <% } %>
       </div>
-      <% if (!locals.user) { %>
-      <div class="navbar-nav my-2 my-lg-0">
-        <a class="nav-item nav-link mr-sm-2" href="/login">My Rewards</a>
-        <a class="nav-item nav-link mr-sm-2" href="/register">Search Menu</a>
-        <a class="nav-item nav-link mr-sm-2" href="/register"
-          ><i class="fas fa-location-arrow"></i
-        ></a>
-      </div>
-      <% } if(locals.user) { %>
-      <form class="form-inline my-2 my-lg-0" method="POST" action="/logout">
-        <label class="mr-sm-2">Logged In As: <%= user.email %></label>
-        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">
-          Logout
-        </button>
-      </form>
-      <% } %>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
+</html>
