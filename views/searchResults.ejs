@@ -54,27 +54,27 @@
   <body>
     <%- include('partials/_header') %>
     <div style="margin: auto; width: 50%; margin-top: 2em">
-      <h1>Order Confirmation Page</h1>
-      <% dishes.forEach(dish => { %>
-      <div>
-        <h3><%= dish.dish_name %></h3>
-        <p>Quantity: <%= dish.quantity %></p>
-        <p>Price With Quantity: <%= dish.dish_price * dish.quantity %></p>
-      </div>
-      <% }) %>
-      <div>
-        <h3 id="order_text"><strong>ORDER TOTAL :</strong></h3>
-        <p id="order_total">$<%= orderTotal %></p>
-      </div>
-      <form id="rewardsForm">
-        <button type="submit" class="btn btn-outline-warning">Check and apply rewards points</button>
+      <form method="POST" action="/confirmation">
+        <% dishes.forEach(dish => { %>
+        <div>
+          <h1><%= dish.name %></h1>
+          <img src="<%= dish.img_url %>" alt="Image of Dish" style="height: 20rem; width: auto;">
+          <p><%= dish.description %></p>
+          <p>Price $: <%= dish.price %></p>
+          <label for="quantity">Quantity: </label>
+          <input type="number" name="quantity" />
+          <input type="hidden" name="dish_name" value="<%= dish.name %>" />
+          <input type="hidden" name="dish_price" value="<%= dish.price %>" />
+          <input type="hidden" name="dish_id" value="<%= dish.id %>" />
+        </div>
+        <% }) %>
+        <button
+        type="submit"
+        class="btn btn-outline-warning"
+        style="margin-top: 2em">Add to cart and go to confirmation page
+        </button>
       </form>
-      <form method="POST" action="/thankyou">
-        <button type="submit" class="btn btn-outline-warning">Confirm and Place Order</button>
-      </form>
-      <form method="GET" action="/menu">
-        <button type="submit" class="btn btn-outline-warning">Go Back and Edit Cart</button>
-      </form>
-    </div>
+
+
   </body>
 </html>
