@@ -18,12 +18,13 @@ module.exports = (db) => {
     const cartItems = req.session.cartItems;
     const dishes = [];
     const { quantity, dish_id } = cartItems;
-    for (const q of quantity) {
-      if (q) {
+    for (let i = 0; i < quantity.length; i++) {
+      const q = quantity[i];
+      if (q !== "" && q !== "0") {
         const dishIndex = Number(q);
         dishes.push({
-          dish_id: dish_id[dishIndex],
-          quantity: quantity[dishIndex],
+          dishId: dish_id[i],
+          quantity: quantity[i],
         });
       }
     }
