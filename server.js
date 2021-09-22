@@ -49,6 +49,7 @@ const menuRoutes = require("./routes/menu");
 const confirmationRoutes = require("./routes/confirmation");
 const thankyouRoutes = require("./routes/thankyou");
 const rewardsRoutes = require("./routes/rewards");
+const searchMenuRoutes = require("./routes/searchMenu");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -59,6 +60,7 @@ const rewardsRoutes = require("./routes/rewards");
 app.use("/menu", menuRoutes(db));
 app.use("/confirmation", confirmationRoutes(db));
 app.use("/thankyou", thankyouRoutes(db));
+app.use("/searchMenu", searchMenuRoutes(db));
 app.use("/api/rewards", rewardsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above

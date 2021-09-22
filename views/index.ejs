@@ -50,37 +50,44 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/rewards.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/searchMenu.js"></script> -->
   </head>
 
   <body>
     <%- include('partials/_header') %>
-    <form method="POST" action="/menu">
-      <p>
-        <label for="name">Full Name: </label>
-        <input type="text" placeholder="Enter Full Name" name="name" />
-      </p>
-      <p>
-        <label for="email">Email: </label>
-        <input type="text" placeholder="Enter Email" name="email" />
-      </p>
-      <p>
-        <label for="phone_number">Phone Number: </label>
-        <input
-          type="text"
-          placeholder="Enter Phone Number"
-          name="phone_number"
-        />
-      </p>
-      <p>
-        <button
-          type="submit"
-          id="btnPlaceOrder"
-          class="btn btn-outline-warning"
-          style="margin-top: 2em"
-        >
-          View Menu
-        </button>
-      </p>
-    </form>
+    <div style="margin: auto; width: 50%; margin-top: 2em">
+      <form
+        style="padding-left: 10em; margin-top: 2em"
+        method="POST"
+        action="/menu"
+      >
+        <p>
+          <label for="name">Full Name: </label>
+          <input type="text" placeholder="Enter Full Name" name="name" />
+        </p>
+        <p>
+          <label for="email">Email: </label>
+          <input type="text" placeholder="Enter Email" name="email" />
+        </p>
+        <p>
+          <label for="phone_number">Phone Number: </label>
+          <input
+            type="text"
+            placeholder="Enter Phone Number"
+            name="phone_number"
+          />
+        </p>
+        <p>
+          <button
+            type="submit"
+            id="btnPlaceOrder"
+            class="btn btn-outline-warning"
+            style="margin-top: 2em"
+          >
+            View Menu
+          </button>
+        </p>
+      </form>
+    </div>
   </body>
 </html>
