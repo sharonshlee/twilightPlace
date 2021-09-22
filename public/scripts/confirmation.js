@@ -9,6 +9,7 @@ $(() => {
       { dishId: 2, quantity: 1 },
       { dishId: 1, quantity: 2 },
     ];
+    console.log(sessionStorage);
 
     const phoneNumber = $("#txtPhoneNumber").val();
     const customerName = $("#txtName").val();

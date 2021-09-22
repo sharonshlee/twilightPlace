@@ -1,15 +1,9 @@
-const express = require("express");
-const bodyParser = require("body-parser");
 const { notifyBySMS, notifyByEmail } = require("../notification");
 const { addOrder } = require("../db/order-queries");
 const { addOrderDetails } = require("../db/order_details-queries");
 const { getTotalWaitTime, getRecommendations } = require("../db/dish-queries");
 
-const router = express.Router();
-router.use(bodyParser.urlencoded({ extended: true }));
-
-router.post("/confirm", async (req, res) => {
-  const { dishes, phoneNumber, customerName, customerEmail } = req.body;
+async function placeOrder(dishes, phoneNumber, customerName, customerEmail) {
   const placedAt = new Date();
 
   const orderResult = await addOrder(
@@ -48,7 +42,7 @@ router.post("/confirm", async (req, res) => {
     await notifyBySMS(`Your food is ready for pick up!`, phoneNumber).catch(
       (err) => console.log(err)
     );
-    res.end();
+    return;
   }, (totalWaitTime * 60 * 1000) / 1000); // Minutes * 60s * 1000ms(/ 1000 for testing only)
   //// End SMS
 
@@ -86,6 +80,6 @@ router.post("/confirm", async (req, res) => {
     );
   }
   // END EMAIL
-});
+}
 
-module.exports = router;
+module.exports = { placeOrder };

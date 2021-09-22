@@ -1,15 +1,15 @@
-const bcrypt = require('bcrypt');
-const express = require('express');
+const bcrypt = require("bcryptjs");
+const express = require("express");
 const router = express.Router();
 // const { getUserWithName } = require('./midterm');
 
 // module.exports = function(midterm) {
 
-  /**
-   * Check if a user exists with a given username and password
-   * @param {String} email
-   * @param {String} password encrypted
-   */
+/**
+ * Check if a user exists with a given username and password
+ * @param {String} email
+ * @param {String} password encrypted
+ */
 //   const login =  function(name, password) {
 //     return getUserWithName(name)
 //     .then(user => {

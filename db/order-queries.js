@@ -1,5 +1,7 @@
-const addOrder = (db, placedAt, customerName, phoneNumber, email) => {
-  return db
+const pool = require("./pool");
+
+const addOrder = (placedAt, customerName, phoneNumber, email) => {
+  return pool
     .query(
       `INSERT INTO orders (placed_at, customer_name, phone_number, email)
        VALUES ($1, $2, $3, $4) RETURNING id;`,

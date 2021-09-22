@@ -1,4 +1,4 @@
-const pool = require("./db");
+const pool = require("./pool");
 
 const getTotalWaitTime = (orderId) => {
   return pool

@@ -1,7 +1,7 @@
-//const pool = require("./db");
+const pool = require("./pool");
 
-const addOrderDetails = (db, orderId, dishId, quantity) => {
-  return db
+const addOrderDetails = (orderId, dishId, quantity) => {
+  return pool
     .query(
       `INSERT INTO orders_details (order_id, dish_id, quantity)
        VALUES ($1, $2, $3);`,
