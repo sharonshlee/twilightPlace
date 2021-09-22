@@ -73,6 +73,10 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
+app.get("/map", (req, res) => {
+  res.render("map");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
