@@ -4,10 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.get('/', (req, res) => {
-    console.log("IT HIT THE GET");
-    console.log("req.sess is :", req.session.searchResults);
     const templateVars = {dishes: req.session.searchResults};
-    console.log("THESE ARE THE SEARCH RESULTS", templateVars);
     res.render('menu', templateVars);
   })
 
