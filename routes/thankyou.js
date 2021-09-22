@@ -21,7 +21,6 @@ module.exports = (db) => {
     for (let i = 0; i < quantity.length; i++) {
       const q = quantity[i];
       if (q !== "" && q !== "0") {
-        const dishIndex = Number(q);
         dishes.push({
           dishId: dish_id[i],
           quantity: quantity[i],
