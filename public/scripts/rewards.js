@@ -15,7 +15,6 @@ function applyRewards() {
     const $orderTotal = $('#order_total');
     const $totalBeforeRewards = parseInt($orderTotal.text().slice(1));
     if (rewards.count >= 1) {
-      // const newTotal = Math.round(($totalBeforeRewards * 0.8 * 100) / 100);
       const newTotal = ($totalBeforeRewards * 0.8).toFixed(2);
       $orderText.text('Rewards Successfully Applied! Your New Total is: ');
       return $orderTotal.text(`$${newTotal}`);
