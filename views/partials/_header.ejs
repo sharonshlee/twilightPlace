@@ -11,7 +11,7 @@
           padding-left: 0.5em;
         "
         class="navbar-brand"
-        href="/urls"
+        href="/"
         >Twilight <span class="fas fa-utensils"></span> Place</a
       >
 
@@ -32,25 +32,11 @@
         style="padding-left: 1em"
         id="navbarSupportedContent"
       >
-        <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link" href="/urls/new">New Order</a>
-        </div>
-        <% if (!locals.user) { %>
-        <div class="navbar-nav my-2 my-lg-0">
-          <a class="nav-item nav-link mr-sm-2" href="/login">My Rewards</a>
-          <a class="nav-item nav-link mr-sm-2" href="/register">Search Menu</a>
-          <a class="nav-item nav-link mr-sm-2" href="/register"
-            ><i class="fas fa-location-arrow"></i
-          ></a>
-        </div>
-        <% } if(locals.user) { %>
-        <form class="form-inline my-2 my-lg-0" method="POST" action="/logout">
-          <label class="mr-sm-2">Logged In As: <%= user.email %></label>
-          <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">
-            Logout
-          </button>
-        </form>
-        <% } %>
+      <div class="navbar-nav my-2 my-lg-0">
+        <a class="nav-item nav-link mr-sm-2" href="/search">Search Menu</a>
+        <a class="nav-item nav-link mr-sm-2" href="/map"
+          ><i class="fas fa-location-arrow"></i
+        ></a>
       </div>
     </nav>
   </header>
