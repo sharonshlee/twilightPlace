@@ -23,7 +23,7 @@ The following steps are only for _one_ of the group members to perform.
 - TWILIO_AUTH_TOKEN=sign up [Twilio](https://www.twilio.com/try-twilio) and get from the console
 - TWILIO_PHONE_FROM=sign up [Twilio](https://www.twilio.com/try-twilio) and get from the console
 - OWNER_PHONE=+16477773366
-- OWNER_GMAIL=owner@gmail.com (allow less secure)
+- OWNER_GMAIL=owner@gmail.com (use less secure app)
 - OWNER_PASSWORD=ownerpassword
 
 3. Install dependencies: `npm i`
@@ -52,3 +52,15 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+- body-parser 1.x
+- chalk 2.x
+- cookie-session 1.x
+- dotenv 2.x
+- ejs 2.x
+- express 4.x
+- morgan 1.x
+- node-sass-middleware 0.x
+- nodemailer 6.x
+- pg 8.x
+- pg-native 3.x
+- twilio 3.xx
