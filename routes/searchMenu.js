@@ -13,10 +13,8 @@ module.exports = (db) => {
     const removeSpacesAndCaps = searchInput.charAt(0).toUpperCase() + searchInput.slice(1).trim();
     db.query(`
       SELECT * FROM dishes
-      WHERE category LIKE '%${removeSpacesAndCaps}%'
-      OR name LIKE '%${removeSpacesAndCaps}%'
-      ;
-      `)
+      WHERE category LIKE $1;
+      `, [`%${removeSpacesAndCaps}%`])
     .then(result => {
       req.session.searchResults = result.rows;
       res.redirect('/searchMenu')
