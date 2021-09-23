@@ -11,6 +11,7 @@ const { placeOrder } = require("./placeOrderHelper");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    req.session.cartItems = null;
     res.render("thankyou");
   });
 
@@ -43,7 +44,6 @@ module.exports = (db) => {
               email,
             };
             req.session.orderConfirmed.push(orderConfirmation);
-            console.log("it is :", req.session.orderConfirmed);
           })
           .catch((err) => {
             res.status(500).json({ error: err.message });

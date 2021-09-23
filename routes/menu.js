@@ -12,9 +12,12 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM dishes;`)
       .then((data) => {
-        // const user = req.session.user;
+
         const dishes = data.rows;
-        const templateVars = { dishes };
+        const templateVars = { dishes, cartItems: []}
+        if (req.session.cartItems) {
+          templateVars.cartItems = req.session.cartItems.quantity;
+        }
         return res.render("menu.ejs", templateVars);
       })
       .catch((err) => {
@@ -25,7 +28,6 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const { phone_number, email, name } = req.body;
     req.session.contactInfo = { phone_number, email, name };
-    console.log("THE USER INFO WAS SAVED: ", req.session.contactInfo);
     res.redirect("/menu");
   });
 

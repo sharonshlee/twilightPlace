@@ -65,7 +65,7 @@
       </form>
       <% } else { %>
       <form method="POST" action="/confirmation">
-        <% dishes.forEach(dish => { %>
+        <% dishes.forEach((dish, index) => { %>
         <h1 style="margin-top: 1em"><%= dish.name %></h1>
         <img
           src="<%= dish.img_url %>"
@@ -75,7 +75,7 @@
         <p><em><%= dish.description %></em></p>
         <p><strong>Price:</strong> $<%= dish.price %></p>
         <label for="quantity">Quantity: </label>
-        <input type="number" name="quantity" />
+        <input type="number" name="quantity" value='<%= cartItems[index] ? cartItems[index] : 0 %>'/>
         <input type="hidden" name="dish_name" value="<%= dish.name %>" />
         <input type="hidden" name="dish_price" value="<%= dish.price %>" />
         <input type="hidden" name="dish_id" value="<%= dish.id %>" />
