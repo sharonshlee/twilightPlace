@@ -50,6 +50,7 @@ const confirmationRoutes = require("./routes/confirmation");
 const thankyouRoutes = require("./routes/thankyou");
 const rewardsRoutes = require("./routes/rewards");
 const searchMenuRoutes = require("./routes/searchMenu");
+const mapRoutes = require("./routes/map");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -61,6 +62,7 @@ app.use("/menu", menuRoutes(db));
 app.use("/confirmation", confirmationRoutes(db));
 app.use("/thankyou", thankyouRoutes(db));
 app.use("/searchMenu", searchMenuRoutes(db));
+app.use("/map", mapRoutes());
 app.use("/api/rewards", rewardsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
@@ -70,13 +72,7 @@ app.use("/api/rewards", rewardsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  const user = req.session.user;
-  const templateVars = { user };
-  res.render("index", templateVars);
-});
-
-app.get("/map", (req, res) => {
-  res.render("map");
+  res.render("index");
 });
 
 app.listen(PORT, () => {
