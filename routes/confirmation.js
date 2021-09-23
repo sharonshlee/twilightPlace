@@ -10,13 +10,18 @@ module.exports = (db) => {
     };
     let orderTotal = 0;
     for (let i = 0; i < cartItems.quantity.length; i++) {
-      const currQuantity = cartItems.quantity[i];
+      let currQuantity = cartItems.quantity[i];
       // if quantity is 0, don't add it;
       if (currQuantity <= 0) {
         continue;
       }
-      const currDishName = cartItems.dish_name[i];
-      const currDishPrice = cartItems.dish_price[i];
+      let currDishName = cartItems.dish_name[i];
+      let currDishPrice = cartItems.dish_price[i];
+      if (cartItems.quantity.length <= 1) {
+        currQuantity = cartItems.quantity;
+        currDishName = cartItems.dish_name;
+        currDishPrice = cartItems.dish_price;
+      }
       templateVars.dishes.push({
         dish_name: currDishName,
         quantity: currQuantity,
