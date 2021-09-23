@@ -10,12 +10,20 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     const { searchInput } = req.body;
-    const removeSpacesAndCaps = searchInput.charAt(0).toUpperCase() + searchInput.slice(1).trim();
+    const removeSpaces = searchInput.trim();
+    console.log("REMOVED SPACES: ", removeSpaces)
     db.query(`
       SELECT * FROM dishes
-      WHERE category LIKE $1;
-      `, [`%${removeSpacesAndCaps}%`])
+      WHERE category LIKE $1
+      OR name LIKE $1;
+      `, [`%${removeSpaces}%`])
+    // db.query(`
+    // SELECT * FROM dishes
+    // WHERE category LIKE '%${removeSpaces}%'
+    // OR name LIKE '%${removeSpaces}%';
+    // `)
     .then(result => {
+      console.log('result is: ', result.rows);
       req.session.searchResults = result.rows;
       res.redirect('/searchMenu')
     })
