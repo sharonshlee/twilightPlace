@@ -45,16 +45,16 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/login.js"></script>
     <script type="text/javascript" src="/scripts/rewards.js"></script>
-    <script type="text/javascript" src="/scripts/confirmation.js"></script>
   </head>
 
   <body>
     <%- include('partials/_header') %>
     <div style="margin: auto; width: 50%; margin-top: 2em">
-      <h1>Order Confirmation Page</h1>
+      <h1 style="margin-bottom: 1em">Order Confirmation Page</h1>
       <% dishes.forEach(dish => { %>
       <div>
         <h3><%= dish.dish_name %></h3>
@@ -67,13 +67,31 @@
         <p id="order_total">$<%= orderTotal %></p>
       </div>
       <form id="rewardsForm">
-        <button type="submit" class="btn btn-outline-warning">Check and apply rewards points</button>
+        <button
+          type="submit"
+          class="btn btn-outline-warning"
+          style="margin: 1em"
+        >
+          Check and apply rewards points
+        </button>
       </form>
       <form method="POST" action="/thankyou">
-        <button type="submit" class="btn btn-outline-warning">Confirm and Place Order</button>
+        <button
+          type="submit"
+          class="btn btn-outline-warning"
+          style="margin: 1em"
+        >
+          Confirm and Place Order
+        </button>
       </form>
       <form method="GET" action="/menu">
-        <button type="submit" class="btn btn-outline-warning">Go Back and Edit Cart</button>
+        <button
+          type="submit"
+          class="btn btn-outline-warning"
+          style="margin: 1em"
+        >
+          Go Back and Edit Cart
+        </button>
       </form>
     </div>
   </body>

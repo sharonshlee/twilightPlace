@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Twilight Place</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twilight Map</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,42 +46,31 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/rewards.js"></script>
-    <!-- <script type="text/javascript" src="/scripts/searchMenu.js"></script> -->
-  </head>
+    <!-- use leaflet map -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css"
+    />
 
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  </head>
   <body>
     <%- include('partials/_header') %>
-    <div style="margin: auto; width: 50%; margin-top: 2em">
-      <form method="POST" action="/menu">
-        <p>
-          <label for="name">Full Name: </label>
-          <input type="text" placeholder="Enter Full Name" name="name" />
-        </p>
-        <p>
-          <label for="email">Email Address:</label>
-          <input type="text" placeholder="Enter Email" name="email" />
-        </p>
-        <p>
-          <label for="phone_number">Phone Number: </label>
-          <input
-            type="text"
-            placeholder="Enter Phone Number"
-            name="phone_number"
-          />
-        </p>
-        <p>
-          <button
-            type="submit"
-            id="btnPlaceOrder"
-            class="btn btn-outline-warning"
-            style="margin-top: 2em"
-          >
-            View Menu
-          </button>
-        </p>
-      </form>
-    </div>
+    <div
+      id="map"
+      style="
+        height: 80vh;
+        width: 50%;
+        position: relative;
+        margin: auto;
+        margin-top: 2em;
+      "
+    ></div>
+
+    <!-- use leaflet map -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=3RjSgdlGBzADYiY65NsGsAAuQhxZ2Q6g"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=3RjSgdlGBzADYiY65NsGsAAuQhxZ2Q6g"></script>
+    <script src="scripts/map.js"></script>
   </body>
 </html>

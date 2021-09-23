@@ -3,7 +3,6 @@ const twilio = require("twilio");
 const from = process.env.TWILIO_PHONE_FROM;
 const ownerGmail = process.env.OWNER_GMAIL;
 const ownerPassword = process.env.OWNER_PASSWORD;
-const customerGmail = process.env.CUSTOMER_GMAIL;
 
 function notifyBySMS(message, toPhoneNumber) {
   const client = twilio(

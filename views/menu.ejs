@@ -51,36 +51,44 @@
 
   <body>
     <%- include('partials/_header') %>
-      <div style="margin: auto; width: 50%; margin-top: 2em">
-        <% if (dishes.length === 0) { %>
-          <h3>There are no foods matching your search.</h3>
-          <form method="GET" action="/">
-            <button
-            type="submit"
-            class="btn btn-outline-warning"
-            style="margin-top: 2em">Navigate back to the Home page
-            </button>
-          </form>
-          <% } else { %>
-            <form method="POST" action="/confirmation">
-            <% dishes.forEach(dish => { %>
-              <h1><%= dish.name %></h1>
-              <img src="<%= dish.img_url %>" alt="Image of Dish" style="height: 20rem; width: auto;">
-              <p><em><%= dish.description %></em></p>
-              <p><strong>Price:</strong> $<%= dish.price %></p>
-              <label for="quantity">Quantity: </label>
-              <input type="number" name="quantity" />
-              <input type="hidden" name="dish_name" value="<%= dish.name %>" />
-              <input type="hidden" name="dish_price" value="<%= dish.price %>" />
-              <input type="hidden" name="dish_id" value="<%= dish.id %>" />
-              <% }) %>
-              <button
-              type="submit"
-              class="btn btn-outline-warning"
-              style="margin-top: 2em">Confirm Order
-              </button>
-            </form>
-          <% } %>
-      </div>
+    <div style="margin: auto; width: 50%; margin-top: 2em">
+      <% if (dishes.length === 0) { %>
+      <h3>There are no foods matching your search.</h3>
+      <form method="GET" action="/">
+        <button
+          type="submit"
+          class="btn btn-outline-warning"
+          style="margin-top: 2em"
+        >
+          Navigate back to the Home page
+        </button>
+      </form>
+      <% } else { %>
+      <form method="POST" action="/confirmation">
+        <% dishes.forEach(dish => { %>
+        <h1 style="margin-top: 1em"><%= dish.name %></h1>
+        <img
+          src="<%= dish.img_url %>"
+          alt="Image of Dish"
+          style="width: 100%"
+        />
+        <p><em><%= dish.description %></em></p>
+        <p><strong>Price:</strong> $<%= dish.price %></p>
+        <label for="quantity">Quantity: </label>
+        <input type="number" name="quantity" />
+        <input type="hidden" name="dish_name" value="<%= dish.name %>" />
+        <input type="hidden" name="dish_price" value="<%= dish.price %>" />
+        <input type="hidden" name="dish_id" value="<%= dish.id %>" />
+        <% }) %>
+        <button
+          type="submit"
+          class="btn btn-outline-warning"
+          style="margin-top: 2em; margin-bottom: 2em"
+        >
+          Confirm Order
+        </button>
+      </form>
+      <% } %>
+    </div>
   </body>
 </html>

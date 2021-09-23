@@ -5,32 +5,29 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-
   router.get("/", (req, res) => {
-      db.query(`SELECT * FROM dishes;`)
-        .then(data => {
-          // const user = req.session.user;
-          const dishes = data.rows;
-          const templateVars = { dishes };
-          return res.render("menu.ejs", templateVars);
-        })
-        .catch(err => {
-          res
-            .status(500)
-            .json({ error: err.message });
-        });
-    });
+    db.query(`SELECT * FROM dishes;`)
+      .then((data) => {
+        // const user = req.session.user;
+        const dishes = data.rows;
+        const templateVars = { dishes };
+        return res.render("menu.ejs", templateVars);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
   router.post("/", (req, res) => {
-    const {phone_number, email, name } = req.body;
-    req.session.contactInfo = {phone_number, email, name};
-    console.log('THE USER INFO WAS SAVED: ', req.session.contactInfo);
+    const { phone_number, email, name } = req.body;
+    req.session.contactInfo = { phone_number, email, name };
+    console.log("THE USER INFO WAS SAVED: ", req.session.contactInfo);
     res.redirect("/menu");
-  })
+  });
 
   return router;
 };
