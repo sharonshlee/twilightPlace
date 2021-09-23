@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="gT6CrGMCprhZnx2s0sJh" name="Page-1">
-        <mxGraphModel dx="861" dy="423" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="595" dy="360" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -87,9 +87,6 @@
                 </mxCell>
                 <mxCell id="34" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="160" y="120" width="40" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="36" value="id, order_id, dish_id, quantiy&lt;br&gt;1,&amp;nbsp; &amp;nbsp; &amp;nbsp; 10,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;1&amp;nbsp;&lt;br&gt;2,&amp;nbsp; &amp;nbsp; &amp;nbsp; 10,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;4&amp;nbsp;&lt;br&gt;3,&amp;nbsp; &amp;nbsp; &amp;nbsp; 10,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 5,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;2&amp;nbsp;&lt;br&gt;4,&amp;nbsp; &amp;nbsp; &amp;nbsp; 10,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 8,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;6&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="230" width="220" height="100" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
