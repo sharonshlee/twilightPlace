@@ -29,7 +29,6 @@
       referrerpolicy="no-referrer"
     />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
 
     <!-- bootstraps -->
     <script
@@ -75,7 +74,11 @@
         <p><em><%= dish.description %></em></p>
         <p><strong>Price:</strong> $<%= dish.price %></p>
         <label for="quantity">Quantity: </label>
-        <input type="number" name="quantity" value='<%= cartItems[index] ? cartItems[index] : 0 %>'/>
+        <input
+          type="number"
+          name="quantity"
+          value="<%= cartItems[index] ? cartItems[index] : 0 %>"
+        />
         <input type="hidden" name="dish_name" value="<%= dish.name %>" />
         <input type="hidden" name="dish_price" value="<%= dish.price %>" />
         <input type="hidden" name="dish_id" value="<%= dish.id %>" />
