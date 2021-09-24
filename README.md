@@ -1,4 +1,14 @@
-# LHL Node Skeleton
+# Twilight Place Restaurant Food Pick-up Ordering Project
+
+A food ordering experience for a single restaurant. Hungry clients of this fictitious restaurant can visit its website, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
+
+## Final Product
+
+!["Screenshot of Home Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/home.png)
+!["Screenshot of Mean Search Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/menu_search.png)
+!["Screenshot of Confirm and Rewards Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/confirm_rewards.png)
+!["Screenshot of SMS and Email Notifications Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/sms_email.png)
+!["Screenshot of Map Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/map.png)
 
 ## Project Setup
 
