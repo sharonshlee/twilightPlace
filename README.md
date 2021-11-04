@@ -1,6 +1,6 @@
 # Twilight Place Restaurant Food Pick-up Ordering Project
 
-A food ordering experience for a single restaurant. Hungry clients of this fictitious restaurant can visit its website, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
+A full-stack web application for customers to order food from a restaurant. Customers will receive SMS and email notifications for food pick up and view the route to the restaurant from their place on a map.
 
 ## Final Product
 
