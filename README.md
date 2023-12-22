@@ -4,11 +4,11 @@ A full-stack web application for customers to order food from a restaurant. Cust
 
 ## Final Product
 
-!["Screenshot of Home Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/home.png)
-!["Screenshot of Mean Search Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/menu_search.png)
-!["Screenshot of Confirm and Rewards Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/confirm_rewards.png)
-!["Screenshot of SMS and Email Notifications Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/sms_email.png)
-!["Screenshot of Map Page"](https://github.com/rexiah23/twilightPlace/blob/master/docs/map.png)
+!["Screenshot of Home Page"](https://github.com/sharonshlee/twilightPlace/blob/master/docs/home.png)
+!["Screenshot of Mean Search Page"](https://github.com/sharonshlee/twilightPlace/blob/master/docs/menu_search.png)
+!["Screenshot of Confirm and Rewards Page"](https://github.com/sharonshlee/twilightPlace/blob/master/docs/confirm_rewards.png)
+!["Screenshot of SMS and Email Notifications Page"](https://github.com/sharonshlee/twilightPlace/blob/master/docs/sms_email.png)
+!["Screenshot of Map Page"](https://github.com/sharonshlee/twilightPlace/blob/master/docs/map.png)
 
 ## Project Setup
 
